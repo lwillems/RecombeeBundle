@@ -1,0 +1,18 @@
+services:
+    obtao.recombee.api.caller:
+        class: Obtao\RecombeeBundle\Service\RecombeeApiCaller
+        arguments:
+            - '%recombee.token%'
+            - '%recombee.database%'
+            - '@serializer'
+            - '@validator'
+    obtao.recombee.batch.builder:
+        class: Obtao\RecombeeBundle\Helper\BatchBuilder
+        arguments:
+            - '@serializer'
+    dynamic.json.type.handler:
+        class: Obtao\RecombeeBundle\Serializer\DynamicJsonTypeFieldHandler
+        tags:
+            - { name: jms_serializer.subscribing_handler }
+
+
