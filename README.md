@@ -92,8 +92,8 @@ class DefaultController extends Controller
         // create a new User
         $user = new ObtaoRecombee\Model\User();
         $user->setSku(12345);
-        $user->setFirstName('John');
-        $user->setLastName('Doe');
+        $user->setNickName('JohnDoe');
+        $user->setOriginCountry('FR');
         
         // use batch helper to build all properties for user above
         /** @var Batch $batch */

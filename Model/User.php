@@ -33,25 +33,17 @@ class User implements HasSkuInterface
     /**
      * @JMS\Type("string")
      * @JMS\Groups({"post_api", "define_property"})
-     * @var string|null $firstName
+     * @var string|null $nickName
      */
-    private $firstName;
+    private $nickName;
 
     /**
      * @JMS\Type("string")
+     * @Assert\Country()
      * @JMS\Groups({"post_api", "define_property"})
-     * @var string|null $lastName
+     * @var string|null $originCountry
      */
-    private $lastName;
-
-    /**
-     * @Assert\Email()
-     * @Assert\NotBlank()
-     * @JMS\Type("string")
-     * @JMS\Groups({"post_api", "define_property"})
-     * @var string $email
-     */
-    private $email;
+    private $originCountry;
 
     /**
      * @return int
@@ -70,50 +62,34 @@ class User implements HasSkuInterface
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getFirstName(): ?string
+    public function getNickName(): ?string
     {
-        return $this->firstName;
+        return $this->nickName;
     }
 
     /**
-     * @param string|null $firstName
+     * @param null|string $nickName
      */
-    public function setFirstName(?string $firstName)
+    public function setNickName(?string $nickName): void
     {
-        $this->firstName = $firstName;
+        $this->nickName = $nickName;
     }
 
     /**
-     * @return string|null
+     * @return null|string
      */
-    public function getLastName(): ?string
+    public function getOriginCountry(): ?string
     {
-        return $this->lastName;
+        return $this->originCountry;
     }
 
     /**
-     * @param string|null
+     * @param null|string $originCountry
      */
-    public function setLastName(?string $lastName)
+    public function setOriginCountry(?string $originCountry): void
     {
-        $this->lastName = $lastName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     */
-    public function setEmail(string $email)
-    {
-        $this->email = $email;
+        $this->originCountry = $originCountry;
     }
 }
