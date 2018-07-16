@@ -46,7 +46,7 @@ class BatchBuilder
 
         $context = SerializationContext::create()->setGroups([SerializationGroups::DEFINE_PROPERTY]);
 
-        $itemArray = $this->serializer->toArray($model, $context);
+        $itemArray = json_decode($this->serializer->serialize($model, 'recombee_json', $context), true);
 
         $interfaces = class_implements($className);
 

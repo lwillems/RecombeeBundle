@@ -137,7 +137,7 @@ class RecombeeApiCaller
         if (!$model instanceof BatchInterface) {
             $jsonData = $this->serializer->serialize(
                 $model,
-                'json',
+                'recombee_json',
                 $context
             );
         } else {
@@ -146,11 +146,15 @@ class RecombeeApiCaller
                     $childContext = $this->initSerializationContext();
                     $batchContext = $this->initSerializationContext(SerializationGroups::BATCH);
                     // build batch fields using batch context
-                    $child = $this->serializer->toArray($item, $batchContext);
-                    // redefine context for child
-                    $child['params'] = $this->serializer->toArray(
-                        $item,
-                        $childContext
+
+                    $child = json_decode($this->serializer->serialize($item, 'recombee_json', $batchContext), true);
+                    $child['params'] = json_decode(
+                            $this->serializer->serialize(
+                                $item,
+                                'recombee_json',
+                                $childContext
+                            ),
+                            true
                     );
 
                     $child['params'] += $item->getQueryParameters();
@@ -166,7 +170,7 @@ class RecombeeApiCaller
                 ]
             );
         }
-
+        
         try {
             $apiRequest = $this->getClient()->createRequest(
                 $model->getMethod(),

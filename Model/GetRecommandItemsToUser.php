@@ -57,7 +57,6 @@ class GetRecommandItemsToUser extends AbstractModel
      * recommendations for that user,
      * as the user will be already known to the system.
      * @Assert\Type("boolean")
-     * @JMS\SerializedName("cascadeCreated")
      * @JMS\Groups({"post_api"})
      * @JMS\Type("boolean")
      * @var boolean
@@ -86,7 +85,6 @@ class GetRecommandItemsToUser extends AbstractModel
      * The acquired property values
      * can be used for easy displaying of the recommended items to the user.
      * @Assert\Type("boolean")
-     * @JMS\SerializedName("returnProperties")
      * @JMS\Groups({"post_api"})
      * @JMS\Type("boolean")
      * @var boolean
@@ -98,7 +96,6 @@ class GetRecommandItemsToUser extends AbstractModel
      * when returnProperties=true is set.
      * The properties are given as a comma-separated list.
      * @Assert\Type("array")
-     * @JMS\SerializedName("includedProperties")
      * @JMS\Groups({"post_api"})
      * @JMS\Type("array")
      * @var array|null
@@ -133,7 +130,6 @@ class GetRecommandItemsToUser extends AbstractModel
      * and may return less than count items
      * when there is not enough data to fulfill it.
      * @Assert\Choice({"low", "medium", "high"})
-     * @JMS\SerializedName("minRelevance")
      * @JMS\Groups({"post_api"})
      * @JMS\Type("string")
      * @var string|null
@@ -153,7 +149,6 @@ class GetRecommandItemsToUser extends AbstractModel
      * You may also use, for example rotationRate=0.2
      * for only slight rotation of recommended items. Default: 0.1.
      * @Assert\Type("integer")
-     * @JMS\SerializedName("rotationRate")
      * @JMS\Groups({"post_api"})
      * @JMS\Type("integer")
      * @var integer|null
@@ -167,7 +162,6 @@ class GetRecommandItemsToUser extends AbstractModel
      * means that items recommended less than 2 hours ago are penalized.
      * Default: 7200.0.
      * @Assert\Type("integer")
-     * @JMS\SerializedName("rotationTime")
      * @JMS\Groups({"post_api"})
      * @JMS\Type("integer")
      * @var integer|null

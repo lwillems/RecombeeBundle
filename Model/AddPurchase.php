@@ -16,7 +16,6 @@ class AddPurchase extends AbstractModel
     /**
      * User who purchased the item
      * @Assert\NotBlank()
-     * @JMS\SerializedName("userId")
      * @JMS\Groups({"post_api"})
      * @var string
      */
@@ -25,7 +24,6 @@ class AddPurchase extends AbstractModel
     /**
      * Purchased item
      * @Assert\NotBlank()
-     * @JMS\SerializedName("itemId")
      * @JMS\Groups({"post_api"})
      * @var string
      */
