@@ -15,4 +15,19 @@ services:
         tags:
             - { name: jms_serializer.subscribing_handler }
 
+    obtao.recombee.serialization_naming_strategy:
+        class: JMS\Serializer\Naming\SerializedNameAnnotationStrategy
+        arguments:
+            - '@jms_serializer.identical_property_naming_strategy'
+
+    obtao.recombee.json_serialization_visitor:
+        class: JMS\Serializer\JsonSerializationVisitor
+        arguments:
+            - '@obtao.recombee.serialization_naming_strategy'
+            - '@jms_serializer.accessor_strategy'
+        calls:
+            - ['setOptions', ['%jms_serializer.json_serialization_visitor.options%']]
+        tags:
+            - { name: 'jms_serializer.serialization_visitor', format: 'recombee_json'}
+
 

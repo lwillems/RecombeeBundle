@@ -13,21 +13,18 @@ class RecombeeApiError
 {
     /**
      * @JMS\Type("string")
-     * @JMS\SerializedName("message")
      * @var string|null
      */
     private $message;
 
     /**
      * @JMS\Type("integer")
-     * @JMS\SerializedName("statusCode")
      * @var integer|null
      */
     private $statusCode;
 
     /**
      * @JMS\Type("string")
-     * @JMS\SerializedName("error")
      * @var string|null
      */
     private $error;
